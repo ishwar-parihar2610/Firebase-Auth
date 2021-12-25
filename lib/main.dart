@@ -1,9 +1,14 @@
+
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/routes/routes.dart';
 import 'package:flutter_application_1/screens/login_screen.dart';
 import 'package:flutter_application_1/screens/registration.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -19,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.red),
       home: LoginScreen(),
       routes: {
-        MyRoutes.registration_screen:(context)=>RegistrationScreen(),
+        MyRoutes.registration_screen: (context) => RegistrationScreen(),
       },
     );
   }
